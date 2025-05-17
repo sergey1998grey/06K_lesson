@@ -7,9 +7,10 @@ def test_form_validation():
     driver = webdriver.Chrome()
     wait = WebDriverWait(driver, 10)
 
-    driver.get("https://bonigarcia.dev/selenium-webdriver-java/data-types.html")
+    driver.get(
+        "https://bonigarcia.dev/selenium-webdriver-java/data-types.html"
+    )
 
-    # Заполняем поля формы
     driver.find_element(By.NAME, "first-name").send_keys("Иван")
     driver.find_element(By.NAME, "last-name").send_keys("Петров")
     driver.find_element(By.NAME, "address").send_keys("Ленина, 55-3")
@@ -22,9 +23,14 @@ def test_form_validation():
 
     driver.find_element(By.CSS_SELECTOR, "button[type='submit']").click()
 
-    wait.until(lambda d: "alert-danger" in d.find_element(By.ID, "zip-code").get_attribute("class"))
-    assert "alert-danger" in driver.find_element(By.ID, "zip-code").get_attribute("class")
-
+    wait.until(
+        lambda d: "alert-danger" in d.find_element(
+            By.ID, "zip-code"
+        ).get_attribute("class")
+    )
+    assert "alert-danger" in driver.find_element(
+        By.ID, "zip-code"
+    ).get_attribute("class")
 
     fields = [
         "first-name", "last-name", "address", "e-mail",
@@ -35,6 +41,3 @@ def test_form_validation():
         assert "alert-success" in field_status.get_attribute("class")
 
     driver.quit()
-
-
-test_form_validation()

@@ -35,6 +35,3 @@ def test_shop_total():
     assert "Total: $58.29" in total
 
     driver.quit()
-
-
-test_shop_total()
